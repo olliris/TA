@@ -3360,6 +3360,10 @@
       questionsDiv.innerHTML = "";
       if (!shuffledQuiz.length) {
         questionsDiv.innerHTML = "<p>Aucune question disponible.</p>";
+        const backButton = document.createElement("button");
+        backButton.textContent = "Retour à l'accueil";
+        backButton.onclick = goBackToHome; // ou resetQuiz selon votre logique d'accueil
+        questionsDiv.appendChild(backButton);
         return;
       }
       if (currentQuestion >= numQuestions) {
