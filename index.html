@@ -3361,14 +3361,8 @@
       if (!shuffledQuiz.length) {
         questionsDiv.innerHTML = "<p>Aucune question disponible.</p>";
         const backButton = document.createElement("button");
-        backButton.textContent = "Retour à l'accueil";
-        backButton.onclick = function() {
-          if (window.history.length > 1) {
-            window.history.back();
-          } else {
-            window.location.href = "https://olliris.github.io/TA/"; // Remplacez par l'URL de votre page d'accueil
-          }
-        };
+        backButton.textContent = "Retourner à l'accueil";
+        backButton.onclick = resetQuiz; // Même comportement que le bouton en mode exercise
         questionsDiv.appendChild(backButton);
         return;
       }
