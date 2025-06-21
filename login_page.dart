@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
-  final void Function()? onTap;
+  final VoidCallback onTap;
   const LoginPage({super.key, required this.onTap});
 
   @override
@@ -9,56 +11,57 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Contrôleurs pour les champs texte
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void loginUser() {
-    String email = emailController.text.trim();
-    String password = passwordController.text.trim();
+  void signInUser() async {
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
       showError("Veuillez remplir tous les champs.");
       return;
     }
 
-    // Ici tu peux connecter Firebase ou un backend plus tard
-    print("Connexion réussie avec email: $email");
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("Bienvenue"),
-        content: Text("Connecté en tant que $email"),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("OK"),
-          )
-        ],
-      ),
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Fluttertoast.showToast(msg: "Connexion réussie !");
+      // Navigation auto via main.dart
+    } on FirebaseAuthException catch (e) {
+      showError(e.message ?? "Erreur de connexion");
+    }
   }
 
   void showError(String message) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (_) => AlertDialog(
         title: const Text("Erreur"),
         content: Text(message),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text("OK"),
-          )
+          ),
         ],
       ),
     );
   }
 
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[100],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -66,16 +69,16 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.flight_takeoff, size: 100),
+                const Icon(Icons.person, size: 100),
                 const SizedBox(height: 25),
-                const Text("Connexion",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-
+                const Text(
+                  "Se connecter",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 25),
-
-                // Email
                 TextField(
                   controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     hintText: 'Adresse email',
                     border: OutlineInputBorder(),
@@ -83,8 +86,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-
-                // Mot de passe
                 TextField(
                   controller: passwordController,
                   obscureText: true,
@@ -95,26 +96,21 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-
-                // Bouton Se connecter
                 ElevatedButton(
-                  onPressed: loginUser,
-                  child: const Text("Se connecter"),
+                  onPressed: signInUser,
+                  child: const Text("Connexion"),
                 ),
-
                 const SizedBox(height: 20),
-
-                // Lien vers la page d’inscription
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("Pas encore de compte ?"),
                     TextButton(
                       onPressed: widget.onTap,
-                      child: const Text("Créer un compte"),
+                      child: const Text("S'inscrire"),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

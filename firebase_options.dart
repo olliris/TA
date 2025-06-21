@@ -41,46 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD7xDET1Ikurbm92b-uVRqJU2vpVotrdyI',
-    appId: '1:798008126480:web:31cc7575bea1705ce2ee95',
-    messagingSenderId: '798008126480',
-    projectId: 'ulm-copro',
-    authDomain: 'ulm-copro.firebaseapp.com',
-    storageBucket: 'ulm-copro.firebasestorage.app',
+    apiKey: 'AIzaSyAdCvAj9DGGgiFAWpRAiXAY9KUqfrCRqBk',
+    appId: '1:587625569088:web:47b00eed2063de24ac78a5',
+    messagingSenderId: '587625569088',
+    projectId: 'copro-aviation',
+    authDomain: 'copro-aviation.firebaseapp.com',
+    storageBucket: 'copro-aviation.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCrpkQuBQwcr6CRi4yytHoW6NKS0vbEHXw',
-    appId: '1:798008126480:android:7af10c065587d9a4e2ee95',
-    messagingSenderId: '798008126480',
-    projectId: 'ulm-copro',
-    storageBucket: 'ulm-copro.firebasestorage.app',
+    apiKey: 'AIzaSyB81h2h_MA-SYo6ZQQWPmnVduBbNcOYHk0',
+    appId: '1:587625569088:android:176d5c5d9ac8e143ac78a5',
+    messagingSenderId: '587625569088',
+    projectId: 'copro-aviation',
+    storageBucket: 'copro-aviation.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAbTgnxtVfpDYKvV3AVpVEpZRiBPjYfbrE',
-    appId: '1:798008126480:ios:5363f0a6d551d8dae2ee95',
-    messagingSenderId: '798008126480',
-    projectId: 'ulm-copro',
-    storageBucket: 'ulm-copro.firebasestorage.app',
-    iosBundleId: 'com.example.ulmCopro',
+    apiKey: 'AIzaSyDkchEw2KJDB4pctOGJUbByF4afiLTlJyI',
+    appId: '1:587625569088:ios:eab9b7244ab83206ac78a5',
+    messagingSenderId: '587625569088',
+    projectId: 'copro-aviation',
+    storageBucket: 'copro-aviation.firebasestorage.app',
+    iosBundleId: 'com.example.coproAviation',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAbTgnxtVfpDYKvV3AVpVEpZRiBPjYfbrE',
-    appId: '1:798008126480:ios:5363f0a6d551d8dae2ee95',
-    messagingSenderId: '798008126480',
-    projectId: 'ulm-copro',
-    storageBucket: 'ulm-copro.firebasestorage.app',
-    iosBundleId: 'com.example.ulmCopro',
+    apiKey: 'AIzaSyDkchEw2KJDB4pctOGJUbByF4afiLTlJyI',
+    appId: '1:587625569088:ios:eab9b7244ab83206ac78a5',
+    messagingSenderId: '587625569088',
+    projectId: 'copro-aviation',
+    storageBucket: 'copro-aviation.firebasestorage.app',
+    iosBundleId: 'com.example.coproAviation',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyD7xDET1Ikurbm92b-uVRqJU2vpVotrdyI',
-    appId: '1:798008126480:web:e3ecde1a24a67a47e2ee95',
-    messagingSenderId: '798008126480',
-    projectId: 'ulm-copro',
-    authDomain: 'ulm-copro.firebaseapp.com',
-    storageBucket: 'ulm-copro.firebasestorage.app',
+    apiKey: 'AIzaSyAdCvAj9DGGgiFAWpRAiXAY9KUqfrCRqBk',
+    appId: '1:587625569088:web:541fe6d97d588506ac78a5',
+    messagingSenderId: '587625569088',
+    projectId: 'copro-aviation',
+    authDomain: 'copro-aviation.firebaseapp.com',
+    storageBucket: 'copro-aviation.firebasestorage.app',
   );
+
 }

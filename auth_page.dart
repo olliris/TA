@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../login_page.dart';
+import 'login_page.dart';
 import 'register_page.dart';
 
 class AuthPage extends StatefulWidget {
@@ -12,18 +12,31 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   bool showLoginPage = true;
 
-  void togglePages() {
+  // This function can be called to show the login page
+  void showLogin() {
     setState(() {
-      showLoginPage = !showLoginPage;
+      showLoginPage = true;
+    });
+  }
+
+  // This function can be called to show the register page
+  void showRegister() {
+    setState(() {
+      showLoginPage = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    // Pass explicit navigation functions to child pages
     if (showLoginPage) {
-      return LoginPage(onTap: togglePages);
+      return LoginPage(
+        onTap: showRegister, // Go to register when requested
+      );
     } else {
-      return RegisterPage(onTap: togglePages);
+      return RegisterPage(
+        onTap: showLogin, // Go to login when requested
+      );
     }
   }
 }
